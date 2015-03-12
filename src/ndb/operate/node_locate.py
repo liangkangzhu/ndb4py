@@ -1,13 +1,13 @@
 # coding=utf-8
 
 '''
-Created on 2014-5-28
+ndb节点定位
 
 @author: Huiyugeng
 '''
 
 import types
-import regex
+import re
 
 class NodeLocate(object):
     
@@ -105,7 +105,7 @@ class NodeLocate(object):
         # regex valueression match
         if len(exp) > 2 and exp.startswith('/') and exp.endswith('/'):
             regex_str = exp[1: len(exp) - 1]
-            if regex.check_line(regex_str, value):
+            if self.check_line(regex_str, value):
                 return True
         # exp region match
         if len(exp) > 3 and exp.startswith('[') and exp.endswith(']'):
@@ -144,4 +144,20 @@ class NodeLocate(object):
                 update_value_map[value_pair[0].strip()] = value_pair[1].strip()
         
         return update_value_map
+    
+    '''
+        判断字符串是否与正则表达式匹配
+    
+    @param regex: 正则表达式
+    @param line: 需要匹配的字符串
+    
+    @return: 匹配的结果，True 匹配 False 不匹配
+    '''    
+    def check_line(self, regex, line):
+        pattern = re.compile(regex)
+        match = pattern.match(line)
+        if match:
+            return True
+        else:
+            return False
 

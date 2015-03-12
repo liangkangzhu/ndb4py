@@ -1,8 +1,11 @@
 #coding=utf-8
-'''
-Created on 2012-10-31
 
-@author: root
+'''
+ndb格式解析器
+
+将ndb数据信息解析为Map类型
+
+@author: Huiyugeng
 '''
 
 import types
@@ -12,10 +15,10 @@ class NodeReader():
         self.linenum=0
     
     '''
-    Load Node File
-    @param filename: Node file name
+     载入ndb文件
+    @param filename: ndb文件名
     
-    @return: Node File Result(Dictionary Object)
+    @return: 载入的ndb对象(Dictionary Object)
     '''
     def read(self, filename):
         try:
@@ -25,7 +28,7 @@ class NodeReader():
         return self.__parse(_list)
     
     '''
-    Parse Dictionary Object
+    解析Dictionary对象
     '''
     def __parse(self, _list):
         node ={}

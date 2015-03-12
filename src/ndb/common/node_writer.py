@@ -1,7 +1,9 @@
 #coding=utf-8
 
 '''
-Created on 2012-5-26
+ndb存储
+
+将ndb的数据内容保存至文件中
 
 @author: Huiyugeng
 '''

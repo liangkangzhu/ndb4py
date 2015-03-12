@@ -1,7 +1,7 @@
 #coding=utf-8
 
 '''
-Created on 2014-5-28
+ndb语句执行器
 
 @author: Huiyugeng
 '''

@@ -1,7 +1,7 @@
 #coding=utf-8
 
 '''
-Created on 2012-8-15
+ndb节点过滤
 
 @author: Huiyugeng
 '''

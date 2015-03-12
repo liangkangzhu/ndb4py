@@ -14,7 +14,7 @@ Node Locate Unit Test
 class StatementTest(unittest.TestCase):
     
     def setUp(self):  
-        self.node = ndb.load('../../resource/example_1.txt')
+        self.node = ndb.read('../../resource/example_1.txt')
     
     def test_select(self):
         
