@@ -15,7 +15,7 @@ class NodeReader():
         self.linenum=0
     
     '''
-     载入ndb文件
+    载入ndb文件
     @param filename: ndb文件名
     
     @return: 载入的ndb对象(Dictionary Object)
@@ -23,6 +23,19 @@ class NodeReader():
     def read(self, filename):
         try:
             _list = [line for line in open(filename, 'r').readlines()]
+        except:
+            _list = []
+        return self.__parse(_list)
+    
+    '''
+    载入nbd数据流
+    @param data: ndb数据流
+    
+    @return: 载入的ndb对象(Dictionary Object)
+    '''
+    def read_string(self, data):
+        try:
+            _list = data.split('\n')
         except:
             _list = []
         return self.__parse(_list)

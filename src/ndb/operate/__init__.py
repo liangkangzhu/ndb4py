@@ -27,5 +27,5 @@ def insert(node, path, value, action = None):
 def locate(node, query, multi, is_create = False):
     return node_locate.NodeLocate().locate(node, query, multi, is_create)
 
-def filte(table, query=None, union=False):
-    return node_filter.NodeFilter().filte(table, query, union)
+def filte(table, query=None, union=False, sort_key=None):
+    return node_filter.NodeFilter().filte(table, query, union, sort_key)
