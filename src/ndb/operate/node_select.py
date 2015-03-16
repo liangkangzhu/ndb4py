@@ -1,15 +1,12 @@
 # coding=utf-8
 
-'''
-ndb节点查询
-
-@author: Huiyugeng
-'''
-
 import node_locate
 
 class NodeSelect(node_locate.NodeLocate):
-    
+    '''
+    #节点查询：采用locate中描述的查询表达式
+    #表达式格式为：A->B->C:value
+    '''
     def __init__(self):
         self.result = []
     
@@ -24,5 +21,5 @@ class NodeSelect(node_locate.NodeLocate):
         if self.action != None:
             self.action(node)
         
-        if node!= None:
+        if node != None:
             self.result.append(node)

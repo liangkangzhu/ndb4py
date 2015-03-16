@@ -1,18 +1,13 @@
-#coding=utf-8
+# coding=utf-8
 
-'''
-Created on 2012-8-5
-
-@author: Huiyugeng
-'''
 import unittest
 import ndb
 
-'''
-Node Locate Unit Test
-'''
+
 class StatementTest(unittest.TestCase):
-    
+    '''
+    Node Locate Unit Test
+    '''
     def setUp(self):  
         self.node = ndb.read('../../resource/example_1.txt')
     
@@ -44,9 +39,9 @@ class StatementTest(unittest.TestCase):
         self.assertEqual(len(result), 4)
         
     def test_select_list(self):
-        self.node = [{'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-01-21', 'memory': '70%', 'cpu': '9%'}, 
-                     {'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-06-23', 'memory': '70%', 'cpu': '10%'}, 
-                     {'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-11-26', 'memory': '70%', 'cpu': '14%'}, 
+        self.node = [{'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-01-21', 'memory': '70%', 'cpu': '9%'},
+                     {'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-06-23', 'memory': '70%', 'cpu': '10%'},
+                     {'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-11-26', 'memory': '70%', 'cpu': '14%'},
                      {'session': '1', 'hostname': 'H3C', 'version': '3.40', 'time': '2015-03-16-12-16-29', 'memory': '70%', 'cpu': '18%'}]
         result = ndb.execute(self.node, 'select:cpu')
         self.assertEqual(len(result), 4)
@@ -87,5 +82,5 @@ class StatementTest(unittest.TestCase):
         
 
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+    # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

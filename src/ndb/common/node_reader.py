@@ -1,37 +1,35 @@
-#coding=utf-8
-
-'''
-ndb格式解析器
-
-将ndb数据信息解析为Map类型
-
-@author: Huiyugeng
-'''
+# coding=utf-8
 
 import types
 
 class NodeReader():
+    '''
+    #读取并解析ndb文件
+    '''
+    
     def __init__(self):
-        self.linenum=0
+        self.linenum = 0
     
-    '''
-     载入ndb文件
-    @param filename: ndb文件名
-    
-    @return: 载入的ndb对象(Dictionary Object)
-    '''
+
     def read(self, filename):
+        '''
+        #载入ndb文件
+        @param filename: ndb文件名
+        
+        @return: 载入的ndb对象(Dictionary Object)
+        '''
         try:
             _list = [line for line in open(filename, 'r').readlines()]
         except:
             _list = []
         return self.__parse(_list)
     
-    '''
-    解析Dictionary对象
-    '''
+
     def __parse(self, _list):
-        node ={}
+        '''
+        #解析Dictionary对象
+        '''
+        node = {}
 
         while self.linenum < len(_list):
             
@@ -39,7 +37,7 @@ class NodeReader():
     
             self.linenum = self.linenum + 1
             
-            if line==None or line=='' or line.startswith('#'):
+            if line == None or line == '' or line.startswith('#'):
                 continue
             
             if line.endswith('{'):

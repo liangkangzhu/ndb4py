@@ -1,8 +1,4 @@
-'''
-Created on 2014-5-8
-
-@author: Huiyugeng
-'''
+# coding=utf-8
 
 import node_reader
 import node_writer

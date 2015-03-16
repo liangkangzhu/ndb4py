@@ -1,7 +1,6 @@
 #coding=utf-8
 
 '''
-ndb语句执行器
 
 @author: Huiyugeng
 '''
@@ -10,21 +9,24 @@ import types
 import operate
 
 class Statement:
-    
+    '''
+    ndb语句执行器
+    '''
+
     def __init__(self):
         pass
     
-    '''
-     * 执行ndb语句
-     * 
-     * @param query 需要执行的ndb语句
-     * @param ndb ndb信息
-     * @param action 自定义行为,如果使用自定义行为，则仅进行定位不执行值变更
-     * 
-     * @return 执行结果
-    '''
+
     def execute(self, node, query, action):
-        
+        '''
+        Execute ndb query
+ 
+        @param query 需要执行的ndb语句
+        @param ndb ndb信息
+        @param action 自定义行为,如果使用自定义行为，则仅进行定位不执行值变更
+      
+        @return 执行结果
+        '''
         result = node
         command = query
         

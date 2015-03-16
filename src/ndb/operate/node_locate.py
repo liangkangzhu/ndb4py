@@ -1,27 +1,25 @@
 # coding=utf-8
 
-'''
-ndb节点定位
 
-@author: Huiyugeng
-'''
 
 import types
 import re
 
 class NodeLocate(object):
-    
     '''
-    Locate node by expression
-     
-    Search query like: A->B->C:Value
-     
-    @param query: search query
-    @param node: search node(Dictionary Object) 
-     
-    @return search result
+    #节点定位
     '''
-    def locate(self, node, query, is_create = False):
+
+    def locate(self, node, query, is_create=False):
+        '''
+        #使用查询表达式对节点位置进行定位
+        #节点格式为：node->sub_node->end_node:value && end_node:/regex/ && end_node:[min_val, max_val] 
+         
+        @param query: 查询表达式
+        @param node: ndb节点
+         
+        @return 查询结果
+        '''
         if query == None or query == "":
             return
         
@@ -34,7 +32,7 @@ class NodeLocate(object):
         elif type(node) == types.DictionaryType:
             if '->' in query:
                 query_key = query[0 : query.find('->')].strip()
-                sub_query = query[query.find('->') + 2 : len(query)].strip() #2 is "->"'s length
+                sub_query = query[query.find('->') + 2 : len(query)].strip()  # 2 is "->"'s length
 
             if is_create == True and node.has_key(query_key) == False:
                 node[query_key] = {}
@@ -44,7 +42,7 @@ class NodeLocate(object):
                     exp = query_key[1:]
 
                     for key in node:
-                        if self.check_value(key, exp):
+                        if self._check_value(key, exp):
                             if sub_query.startswith(':'):
                                 self.locate(node, key, is_create)
                             else:
@@ -69,7 +67,7 @@ class NodeLocate(object):
                             
                             value = node.get(key)
                             
-                            if self.check_value(value, exp) == False:
+                            if self._check_value(value, exp) == False:
                                 match_result = False
                     
                     if match_result == True:
@@ -101,11 +99,11 @@ class NodeLocate(object):
                         else:
                             self.do_action(result)
                             
-    def check_value(self, value, exp):
+    def _check_value(self, value, exp):
         # regex valueression match
         if len(exp) > 2 and exp.startswith('/') and exp.endswith('/'):
             regex_str = exp[1: len(exp) - 1]
-            if self.check_line(regex_str, value):
+            if self._check_line(regex_str, value):
                 return True
         # exp region match
         if len(exp) > 3 and exp.startswith('[') and exp.endswith(']'):
@@ -135,7 +133,7 @@ class NodeLocate(object):
         self.do_action(node)
     
     
-    def convert_value_map(self, update_value):
+    def _convert_value_map(self, update_value):
         update_value_map = {}
         values = update_value.split(',')
         for value in values:
@@ -146,14 +144,14 @@ class NodeLocate(object):
         return update_value_map
     
     '''
-        判断字符串是否与正则表达式匹配
+    #判断字符串是否与正则表达式匹配
     
     @param regex: 正则表达式
     @param line: 需要匹配的字符串
     
     @return: 匹配的结果，True 匹配 False 不匹配
     '''    
-    def check_line(self, regex, line):
+    def __check_line(self, regex, line):
         pattern = re.compile(regex)
         match = pattern.match(line)
         if match:
