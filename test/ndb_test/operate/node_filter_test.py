@@ -1,18 +1,13 @@
-#coding=utf-8
+# coding=utf-8
 
-'''
-Created on 2012-8-14
-
-@author: Huiyugeng
-'''
 import unittest
 import ndb
 
-'''
-ListFilter单元测试
-'''
-class ListFilterTest(unittest.TestCase):
 
+class ListFilterTest(unittest.TestCase):
+    '''
+    ListFilter单元测试
+    '''
 
     def test_filter(self):
         _list = [
@@ -26,5 +21,5 @@ class ListFilterTest(unittest.TestCase):
         print _list
         
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+    # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

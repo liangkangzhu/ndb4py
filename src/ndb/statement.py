@@ -1,7 +1,6 @@
 #coding=utf-8
 
 '''
-ndb语句执行器
 
 @author: Huiyugeng
 '''
@@ -10,21 +9,24 @@ import types
 import operate
 
 class Statement:
-    
+    '''
+    ndb语句执行器
+    '''
+
     def __init__(self):
         pass
     
-    '''
-     * 执行ndb语句
-     * 
-     * @param query 需要执行的ndb语句
-     * @param ndb ndb信息
-     * @param action 自定义行为,如果使用自定义行为，则仅进行定位不执行值变更
-     * 
-     * @return 执行结果
-    '''
+
     def execute(self, node, query, action):
-        
+        '''
+        Execute ndb query
+ 
+        @param query 需要执行的ndb语句
+        @param ndb ndb信息
+        @param action 自定义行为,如果使用自定义行为，则仅进行定位不执行值变更
+      
+        @return 执行结果
+        '''
         result = node
         command = query
         
@@ -41,25 +43,11 @@ class Statement:
             
             if len(query_items) > 1:
                 value = query_items[1].strip()
-            
-            result_list = []
-            
-            if type(node) == types.ListType:
-                
-                for item in node:
-                    if type(item) == types.DictionaryType:
-                        if action != None:
-                            result_list.append(self.__execute(node, command, path, None, action))
-                        else:
-                            result_list.append(self.__execute(node, command, path, value, None))
-            elif type(node) == types.DictionaryType:
-                if action != None:
-                    return self.__execute(node, command, path, None, action)
-                else:
-                    return self.__execute(node, command, path, value, None)
 
-            if len(result_list) > 0:
-                return result_list
+            if action != None:
+                return self.__execute(node, command, path, None, action)
+            else:
+                return self.__execute(node, command, path, value, None)
 
         return result
 
@@ -75,7 +63,7 @@ class Statement:
                     result = operate.select(node, path)
 
                 if command == 'one':
-                    if type(result) == types.ListType and len(result) > 0:
+                    if result != None and type(result) == types.ListType:
                         result = result[0]
                     else:
                         result = {}

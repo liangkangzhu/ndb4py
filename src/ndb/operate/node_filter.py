@@ -1,24 +1,21 @@
-#coding=utf-8
-
-'''
-ndb节点过滤
-
-@author: Huiyugeng
-'''
+# coding=utf-8
 
 class NodeFilter:
     '''
-    List过滤
-    
-    @param table: 需要过滤的列表
-    @param query: 查询条件，支持eq(相等),like（类似），例如['name':{'type': 'eq', 'value': 'wang'}],查找table中name属性为wang的信息
-    @param union: 是否采用交叉结果
-    @param sort_key: 进行排序的字段
-    
-    @return: 过滤后的List   
+    #节点过滤：从ndb中进行数据过滤
     '''
-    def filte(self, table, query=None, union=False, sort_key=None):
     
+    def filte(self, table, query=None, union=False, sort_key=None):
+        '''
+        List过滤
+        
+        @param table: 需要过滤的列表
+        @param query: 查询条件，支持eq(相等),like（类似），例如['name':{'type': 'eq', 'value': 'wang'}],查找table中name属性为wang的信息
+        @param union: 是否采用交叉结果
+        @param sort_key: 进行排序的字段
+        
+        @return: 过滤后的List   
+        '''
         if query == None:
             return table
         if table == None:
@@ -40,7 +37,7 @@ class NodeFilter:
         return _table
     
     '''
-    条件间取与，query中全部条件满足，就加入列表
+    #条件间取与，query中全部条件满足，就加入列表
     '''
     def filter_and(self, table, query):
         _table = []
@@ -73,7 +70,7 @@ class NodeFilter:
         return _table
     
     '''
-    条件间取或，query中任意条件满足，就加入列表
+    #条件间取或，query中任意条件满足，就加入列表
     '''
     def filter_or(self, table, query):
         _table = []

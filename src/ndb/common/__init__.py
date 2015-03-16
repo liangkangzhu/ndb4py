@@ -1,8 +1,4 @@
-'''
-Created on 2014-5-8
-
-@author: Huiyugeng
-'''
+# coding=utf-8
 
 import node_reader
 import node_writer
@@ -21,3 +17,4 @@ def print_node(name, node):
 
 def print_xml(name, node):
     return node_writer.NodeWriter().print_xml(name, node)
+

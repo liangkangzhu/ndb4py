@@ -1,22 +1,17 @@
-#coding=utf-8
+# coding=utf-8
 
-'''
-Created on 2012-8-5
-
-@author: Huiyugeng
-'''
 import unittest
 import ndb
 
-'''
-Node Locate Unit Test
-'''
 class NodeSelectTest(unittest.TestCase):
-
+    
+    '''
+    Node Locate Unit Test
+    '''
     def test_select(self):
         node = {}
         node['firewall'] = {'state':[
-                                    {'id':'1', 'cpu':'80', 'memory':'40', 'state':'startup'}, 
+                                    {'id':'1', 'cpu':'80', 'memory':'40', 'state':'startup'},
                                     {'id':'2', 'cpu':'30', 'memory':'20', 'state':'startup'},
                                     {'id':'3', 'cpu':'30', 'memory':'20', 'state':'unknown'},
                                     {'id':'4', 'cpu':'30', 'memory':'20', 'state':'unknown'},
@@ -24,7 +19,7 @@ class NodeSelectTest(unittest.TestCase):
                                     {'id':'6', 'cpu':'10', 'memory':'50', 'state':'startup'}
                                     ],
                             'state1':[
-                                    {'id':'1', 'cpu':'80', 'memory':'40', 'state':'startup'}, 
+                                    {'id':'1', 'cpu':'80', 'memory':'40', 'state':'startup'},
                                     {'id':'2', 'cpu':'30', 'memory':'20', 'state':'startup'},
                                     {'id':'3', 'cpu':'70', 'memory':'20', 'state':'unknown'},
                                     {'id':'4', 'cpu':'30', 'memory':'20', 'state':'unknown'}
@@ -47,5 +42,5 @@ class NodeSelectTest(unittest.TestCase):
         self.assertEqual(len(result), 2)
 
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+    # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

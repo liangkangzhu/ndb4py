@@ -1,23 +1,18 @@
-#coding=utf-8
+# coding=utf-8
 
-'''
-Created on 2012-8-14
-
-@author: Huiyugeng
-'''
 import unittest
 import ndb
 
-'''
-NodeReader Unit Test
-'''
+
 class NodeReaderTest(unittest.TestCase):
+    '''
+    NodeReader Unit Test
+    '''
 
-
-    def test_load(self):
-        config_map = ndb.read('test')
-        print config_map
+    def test_read(self):
+        ndb = ndb.read('../../resource/example_1.txt')
+        print ndb
         
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+    # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

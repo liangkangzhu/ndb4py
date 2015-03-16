@@ -1,15 +1,15 @@
 # coding=utf-8
 
-'''
-ndb节点删除
 
-@author: Huiyugeng
-'''
 import types
 
 import node_locate
 
 class NodeDelete(node_locate.NodeLocate):
+    '''
+    #节点删除：从ndb中删除某个指定节点
+    #删除时可以指定删除指定的条目或者整块内容删除
+    '''
     
     def __init__(self):
         self.columns = []
@@ -18,7 +18,7 @@ class NodeDelete(node_locate.NodeLocate):
     def delete(self, node, path, value, action):
         if value != None:
             if value.startswith('[') and value.endswith(']'):
-                self.columns = value[1:len(value) -1].split(',')
+                self.columns = value[1:len(value) - 1].split(',')
             elif value == 'block':
                 self.clear = True
                 
