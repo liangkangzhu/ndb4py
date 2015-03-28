@@ -63,10 +63,10 @@ class Statement:
                     result = operate.select(node, path)
 
                 if command == 'one':
-                    if result != None and type(result) == types.ListType:
+                    if result != None and type(result) == types.ListType and len(result) > 0:
                         result = result[0]
                     else:
-                        result = {}
+                        result = None
             
             elif command == 'update':
                 if action != None:
