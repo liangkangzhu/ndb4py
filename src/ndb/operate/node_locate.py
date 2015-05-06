@@ -67,7 +67,7 @@ class NodeLocate(object):
                             
                             value = node.get(key)
                             
-                            if self._check_value(value, exp) == False:
+                            if value == None or self._check_value(value, exp) == False:
                                 match_result = False
                     
                     if match_result == True:
